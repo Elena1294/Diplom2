@@ -1,0 +1,11 @@
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+--- a/README.md	(revision f5b7e4454e824ff17166741d81f2f9a7edfad09c)
++++ b/README.md	(date 1678641497002)
+@@ -1,0 +1,1 @@
++Дипломный проект. Задание 2
+\ No newline at end of file
