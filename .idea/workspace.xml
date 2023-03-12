@@ -5,35 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f65e7989-7d8d-4b5c-9a7f-bdd97744969c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Endpoints.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/OrderAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/TestDataUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UserAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/OrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Endpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Endpoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/OrderAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/OrderAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TestDataUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestDataUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -45,27 +41,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Program Files/Git/Diplom_2"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.UpdateUserTest">
-    <configuration name="CreateOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RunManager" selected="JUnit.UserRegisterTest">
+    <configuration name="OrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CreateOrderTest" />
+      <option name="MAIN_CLASS_NAME" value="OrderTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateOrderTest.orderCreateWithoutAuthorization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderTest.getOrdersWithAuthTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CreateOrderTest" />
-      <option name="METHOD_NAME" value="orderCreateWithoutAuthorization" />
+      <option name="MAIN_CLASS_NAME" value="OrderTest" />
+      <option name="METHOD_NAME" value="getOrdersWithAuthTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -80,33 +77,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UpdateUserTest.updateDataUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserLoginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UpdateUserTest" />
-      <option name="METHOD_NAME" value="updateDataUserTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="UserLoginTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UpdateUserTest.updateDataUserWithoutAuthTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRegisterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UpdateUserTest" />
-      <option name="METHOD_NAME" value="updateDataUserWithoutAuthTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="UserRegisterTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserRegisterTest" />
+        <item itemvalue="JUnit.UserLoginTest" />
         <item itemvalue="JUnit.UpdateUserTest" />
-        <item itemvalue="JUnit.UpdateUserTest.updateDataUserWithoutAuthTest" />
-        <item itemvalue="JUnit.UpdateUserTest.updateDataUserTest" />
-        <item itemvalue="JUnit.CreateOrderTest.orderCreateWithoutAuthorization" />
-        <item itemvalue="JUnit.CreateOrderTest" />
+        <item itemvalue="JUnit.OrderTest.getOrdersWithAuthTest" />
+        <item itemvalue="JUnit.OrderTest" />
       </list>
     </recent_temporary>
   </component>
@@ -125,14 +120,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/OrderAPI.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/UserAPI.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="5" />
+          <line>18</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

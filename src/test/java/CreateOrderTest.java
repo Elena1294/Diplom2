@@ -11,18 +11,18 @@ import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.*;
 
 public class CreateOrderTest {
-
-    private ValidatableResponse validatableResponse;
-    private String accessToken;
-
-    UserAPI userAPI = new UserAPI();
-    OrderAPI orderAPI = new OrderAPI();
-    User userValid = new User(TestDataUser.CREATED_LOGIN, TestDataUser.CREATED_PASSWORD);
-    Order order = new Order();
+    private UserAPI userAPI;
+    private OrderAPI orderAPI;
+    private ValidatableResponse response;
+    private Order order;
+    private User user;
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = Endpoints.BASE;
+        userAPI = new UserAPI();
+        orderAPI = new OrderAPI();
+        order = new Order();
+        user = User.getRandomUser();
     }
 
     @Test
@@ -30,13 +30,15 @@ public class CreateOrderTest {
     @Description("Заказ создан, код ответа 200")
     public void orderCreateWithAuthTest(){
         fillListIngredients();
-        Response response = UserAPI.loginUser(userValid);
-        accessToken = response.then().extract().path("accessToken");
-        validatableResponse = orderAPI.orderCreate(order,accessToken);
-        int statusCode = validatableResponse.extract().statusCode();
-        boolean isCreate = validatableResponse.extract().path("success");
+        response = userAPI.newUser(user);
+        String accessToken = response.extract().path("accessToken");
+        userAPI.loginUser(user, accessToken);
+        response = orderAPI.orderCreate(order,accessToken);
+        int statusCode = response.extract().statusCode();
+        boolean isCreate = response.extract().path("success");
         assertEquals(SC_OK, statusCode);
         assertTrue(isCreate);
+        userAPI.deleteUser(StringUtils.substringAfter(accessToken, " "));
     }
 
 
@@ -45,7 +47,7 @@ public class CreateOrderTest {
     @Description("Заказ создан, код ответа 200")
     public void orderCreateWithoutAuthorization(){
         fillListIngredients();
-        validatableResponse = orderAPI.createOrderWithoutAuthorization(order);
+        ValidatableResponse validatableResponse = orderAPI.createOrderWithoutAuthorization(order);
         int statusCode = validatableResponse.extract().statusCode();
         boolean isCreate = validatableResponse.extract().path("success");
         assertEquals(SC_OK, statusCode);
@@ -55,7 +57,7 @@ public class CreateOrderTest {
     @DisplayName("Создание заказа без авторизации пользователя и без ингредиентов")
     @Description("Ошибка 400")
     public void orderCreateWithoutAuthorizationAndIngredients(){
-        validatableResponse = orderAPI.createOrderWithoutAuthorization(order);
+        ValidatableResponse validatableResponse = orderAPI.createOrderWithoutAuthorization(order);
         int statusCode = validatableResponse.extract().statusCode();
         boolean isCreate = validatableResponse.extract().path("success");
         assertEquals(SC_BAD_REQUEST, statusCode);
@@ -66,7 +68,7 @@ public class CreateOrderTest {
     @DisplayName("Создние заказа без авторизации пользователя и с неверным хешом ингредиентов")
     @Description("Ошибка 500")
     public void orderCreateWithoutAuthorizationAndWrongHashIngredient(){
-        validatableResponse = userAPI.getAllIngredients();
+        ValidatableResponse validatableResponse = orderAPI.getAllIngredients();
         List<String> list = validatableResponse.extract().path("data._id");
         List<String> ingredients = order.getIngredients();
         ingredients.add(list.get(0));
@@ -77,7 +79,7 @@ public class CreateOrderTest {
         assertEquals(SC_INTERNAL_SERVER_ERROR, statusCode);
     }
     private void fillListIngredients() {
-        validatableResponse = userAPI.getAllIngredients();
+        ValidatableResponse validatableResponse = orderAPI.getAllIngredients();
         List<String> list = validatableResponse.extract().path("data._id");
         List<String> ingredients = order.getIngredients();
         ingredients.add(list.get(0));

@@ -1,7 +1,7 @@
+
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
-
 public class OrderAPI {
 
     public ValidatableResponse orderCreate(Order order, String accessToken) {
@@ -14,7 +14,7 @@ public class OrderAPI {
                 .then()
                 .log().all();
     }
-    public ValidatableResponse createOrderWithoutAuthorization(Order order) {
+    public static ValidatableResponse createOrderWithoutAuthorization(Order order) {
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .body(order)
@@ -23,7 +23,7 @@ public class OrderAPI {
                 .then()
                 .log().all();
     }
-    public ValidatableResponse getOrdersByAuth(String accessToken) {
+    public static ValidatableResponse getOrdersByAuth(String accessToken) {
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .header("Authorization", accessToken)
@@ -32,11 +32,19 @@ public class OrderAPI {
                 .then()
                 .log().all();
     }
-    public ValidatableResponse getOrdersWithoutAuth() {
+    public static ValidatableResponse getOrdersWithoutAuth() {
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .log().all()
                 .get(Endpoints.ORDER_PATH)
+                .then()
+                .log().all();
+    }
+    public ValidatableResponse getAllIngredients() {
+        return given()
+                .spec(Endpoints.getBaseSpec())
+                .log().all()
+                .get(Endpoints.INGREDIENTS_PATH)
                 .then()
                 .log().all();
     }

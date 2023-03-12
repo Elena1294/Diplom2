@@ -3,25 +3,28 @@ import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
 
-public class UserAPI {
-    public Response newUser (User user){
-        return
-                given()
-                        .header("Content-type", "application/json")
-                        .and()
-                        .body(user)
-                        .when()
-                        .post(Endpoints.API_CREATE);
+public class UserAPI extends Endpoints {
+    public static ValidatableResponse newUser(User user) {
+        return given()
+                .spec(getBaseSpec())
+                .body(user)
+                .log().all()
+                .post(Endpoints.API_CREATE)
+                .then()
+                .log().all();
     }
-    public static Response loginUser(User user){
-        return
-                given()
-                        .header("Content-type", "application/json")
-                        .body(user)
-                        .when().post(Endpoints.API_LOGIN);
+    public static ValidatableResponse loginUser(User user, String accessToken) {
+        return given()
+                .spec(getBaseSpec())
+                .auth().oauth2(accessToken)
+                .body(user)
+                .log().all()
+                .post(Endpoints.API_LOGIN)
+                .then()
+                .log().all();
     }
 
-    public Response deleteUser (User user){
+    public static Response deleteUser(User user){
         return
                 given()
                         .header("Content-type", "application/json")
@@ -31,16 +34,9 @@ public class UserAPI {
                         .delete(Endpoints.API_DELETE);
     }
 
-    public ValidatableResponse getAllIngredients() {
-        return given()
-                .spec(Endpoints.getBaseSpec())
-                .log().all()
-                .get(Endpoints.INGREDIENTS_PATH)
-                .then()
-                .log().all();
-    }
 
-    public ValidatableResponse deleteUser(String accessToken) {
+
+    public static ValidatableResponse deleteUser(String accessToken) {
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .auth().oauth2(accessToken)
@@ -49,7 +45,7 @@ public class UserAPI {
                 .then()
                 .log().all();
     }
-    public ValidatableResponse updateUserWithAuth(User user, String accessToken) {
+    public static ValidatableResponse updateUserWithAuth(User user, String accessToken) {
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .header("Authorization", accessToken)
@@ -59,7 +55,7 @@ public class UserAPI {
                 .then()
                 .log().all();
     }
-    public ValidatableResponse updateUserWithoutAuth(User user) {
+    public static ValidatableResponse updateUserWithoutAuth(User user) {
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .body(user)

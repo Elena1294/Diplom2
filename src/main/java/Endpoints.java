@@ -1,9 +1,9 @@
+
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import static io.restassured.http.ContentType.JSON;
 
 public class Endpoints {
-
     public static final String BASE = "https://stellarburgers.nomoreparties.site";
     public static final String API_CREATE = "/api/auth/register";
     public static final String API_LOGIN = "/api/auth/login";

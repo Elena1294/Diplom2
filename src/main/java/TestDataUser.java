@@ -1,5 +1,4 @@
 public class TestDataUser {
-
     public static final String LOGIN = "NewUser1@mail.ru";
     public static final String PASSWORD = "NewPass123";
     public static final String NAME = "NewName";
