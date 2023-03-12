@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+import io.qameta.allure.Allure;
+import org.apache.commons.lang3.RandomStringUtils;
+
+>>>>>>> b68a0a1 (change branch develop)
 public class User {
 
     private String email;
@@ -38,4 +44,19 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+<<<<<<< HEAD
+=======
+
+    public static User getRandomUser() {
+        String name = RandomStringUtils.randomAlphabetic(8);
+        String email = name.toLowerCase() + "@yandex.ru";
+        String password = RandomStringUtils.randomAlphabetic(8);
+
+        Allure.addAttachment("Email : ", email);
+        Allure.addAttachment("Password : ", password);
+        Allure.addAttachment("Name : ", name);
+
+        return new User(email, password, name);
+    }
+>>>>>>> b68a0a1 (change branch develop)
 }

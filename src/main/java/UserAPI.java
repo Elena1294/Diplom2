@@ -3,6 +3,7 @@ import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
 
+<<<<<<< HEAD
 public class UserAPI {
 
     public Response newUser (User user){
@@ -23,6 +24,30 @@ public class UserAPI {
     }
 
     public Response deleteUser (User user){
+=======
+public class UserAPI extends Endpoints {
+    public static ValidatableResponse newUser(User user) {
+        return given()
+                .spec(getBaseSpec())
+                .body(user)
+                .log().all()
+                .post(Endpoints.API_CREATE)
+                .then()
+                .log().all();
+    }
+    public static ValidatableResponse loginUser(User user, String accessToken) {
+        return given()
+                .spec(getBaseSpec())
+                .auth().oauth2(accessToken)
+                .body(user)
+                .log().all()
+                .post(Endpoints.API_LOGIN)
+                .then()
+                .log().all();
+    }
+
+    public static Response deleteUser(User user){
+>>>>>>> b68a0a1 (change branch develop)
         return
                 given()
                         .header("Content-type", "application/json")
@@ -32,6 +57,7 @@ public class UserAPI {
                         .delete(Endpoints.API_DELETE);
     }
 
+<<<<<<< HEAD
     public ValidatableResponse getAllIngredients() {
         return given()
                 .spec(Endpoints.getBaseSpec())
@@ -42,6 +68,11 @@ public class UserAPI {
     }
 
     public ValidatableResponse deleteUser(String accessToken) {
+=======
+
+
+    public static ValidatableResponse deleteUser(String accessToken) {
+>>>>>>> b68a0a1 (change branch develop)
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .auth().oauth2(accessToken)
@@ -50,7 +81,11 @@ public class UserAPI {
                 .then()
                 .log().all();
     }
+<<<<<<< HEAD
     public ValidatableResponse updateUserWithAuth(User user, String accessToken) {
+=======
+    public static ValidatableResponse updateUserWithAuth(User user, String accessToken) {
+>>>>>>> b68a0a1 (change branch develop)
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .header("Authorization", accessToken)
@@ -60,7 +95,11 @@ public class UserAPI {
                 .then()
                 .log().all();
     }
+<<<<<<< HEAD
     public ValidatableResponse updateUserWithoutAuth(User user) {
+=======
+    public static ValidatableResponse updateUserWithoutAuth(User user) {
+>>>>>>> b68a0a1 (change branch develop)
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .body(user)
@@ -69,4 +108,8 @@ public class UserAPI {
                 .then()
                 .log().all();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b68a0a1 (change branch develop)
 }
