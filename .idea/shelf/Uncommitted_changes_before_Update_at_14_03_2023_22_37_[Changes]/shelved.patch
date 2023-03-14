@@ -1,0 +1,277 @@
+Index: src/main/java/UserAPI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.restassured.response.Response;\r\nimport io.restassured.response.ValidatableResponse;\r\n\r\nimport static io.restassured.RestAssured.given;\r\n\r\npublic class UserAPI extends Endpoints {\r\n    public static ValidatableResponse newUser(User user) {\r\n        return given()\r\n                .spec(getBaseSpec())\r\n                .body(user)\r\n                .log().all()\r\n                .post(Endpoints.API_CREATE)\r\n                .then()\r\n                .log().all();\r\n    }\r\n    public static ValidatableResponse loginUser(User user, String accessToken) {\r\n        return given()\r\n                .spec(getBaseSpec())\r\n                .auth().oauth2(accessToken)\r\n                .body(user)\r\n                .log().all()\r\n                .post(Endpoints.API_LOGIN)\r\n                .then()\r\n                .log().all();\r\n    }\r\n\r\n    public static Response deleteUser(User user){\r\n        return\r\n                given()\r\n                        .header(\"Content-type\", \"application/json\")\r\n                        .and()\r\n                        .body(user)\r\n                        .when()\r\n                        .delete(Endpoints.API_DELETE);\r\n    }\r\n\r\n\r\n\r\n    public static ValidatableResponse deleteUser(String accessToken) {\r\n        return given()\r\n                .spec(Endpoints.getBaseSpec())\r\n                .auth().oauth2(accessToken)\r\n                .log().all()\r\n                .delete(Endpoints.USER_PATH + \"user\")\r\n                .then()\r\n                .log().all();\r\n    }\r\n    public static ValidatableResponse updateUserWithAuth(User user, String accessToken) {\r\n        return given()\r\n                .spec(Endpoints.getBaseSpec())\r\n                .header(\"Authorization\", accessToken)\r\n                .body(user)\r\n                .log().all()\r\n                .patch(Endpoints.USER_PATH + \"user\")\r\n                .then()\r\n                .log().all();\r\n    }\r\n    public static ValidatableResponse updateUserWithoutAuth(User user) {\r\n        return given()\r\n                .spec(Endpoints.getBaseSpec())\r\n                .body(user)\r\n                .log().all()\r\n                .patch(Endpoints.USER_PATH + \"user\")\r\n                .then()\r\n                .log().all();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/UserAPI.java b/src/main/java/UserAPI.java
+--- a/src/main/java/UserAPI.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/main/java/UserAPI.java	(date 1678815325417)
+@@ -1,6 +1,5 @@
+ import io.restassured.response.Response;
+ import io.restassured.response.ValidatableResponse;
+-
+ import static io.restassured.RestAssured.given;
+ 
+ public class UserAPI extends Endpoints {
+@@ -34,8 +33,6 @@
+                         .delete(Endpoints.API_DELETE);
+     }
+ 
+-
+-
+     public static ValidatableResponse deleteUser(String accessToken) {
+         return given()
+                 .spec(Endpoints.getBaseSpec())
+Index: src/main/java/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.qameta.allure.Allure;\r\nimport org.apache.commons.lang3.RandomStringUtils;\r\n\r\npublic class User {\r\n\r\n    private String email;\r\n    private String password;\r\n    private String name;\r\n\r\n    public User (String email, String password, String name) {\r\n        this.email = email;\r\n        this.password=password;\r\n        this.name=name;\r\n    }\r\n\r\n    public User (String email, String password) {\r\n        this.email = email;\r\n        this.password=password;\r\n    }\r\n\r\n    public String getEmail() {\r\n        return email;\r\n    }\r\n\r\n    public void setEmail(String email) {\r\n        this.email = email;\r\n    }\r\n\r\n    public String getPassword() {\r\n        return password;\r\n    }\r\n\r\n    public void setPassword(String password) {\r\n        this.password = password;\r\n    }\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public static User getRandomUser() {\r\n        String name = RandomStringUtils.randomAlphabetic(8);\r\n        String email = name.toLowerCase() + \"@yandex.ru\";\r\n        String password = RandomStringUtils.randomAlphabetic(8);\r\n\r\n        Allure.addAttachment(\"Email : \", email);\r\n        Allure.addAttachment(\"Password : \", password);\r\n        Allure.addAttachment(\"Name : \", name);\r\n\r\n        return new User(email, password, name);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/User.java b/src/main/java/User.java
+--- a/src/main/java/User.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/main/java/User.java	(date 1678815325422)
+@@ -1,6 +1,5 @@
+ import io.qameta.allure.Allure;
+ import org.apache.commons.lang3.RandomStringUtils;
+-
+ public class User {
+ 
+     private String email;
+@@ -46,11 +45,9 @@
+         String name = RandomStringUtils.randomAlphabetic(8);
+         String email = name.toLowerCase() + "@yandex.ru";
+         String password = RandomStringUtils.randomAlphabetic(8);
+-
+         Allure.addAttachment("Email : ", email);
+         Allure.addAttachment("Password : ", password);
+         Allure.addAttachment("Name : ", name);
+-
+         return new User(email, password, name);
+     }
+ }
+Index: src/test/java/UserRegisterTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.qameta.allure.Description;\r\nimport io.qameta.allure.junit4.DisplayName;\r\nimport io.restassured.RestAssured;\r\nimport io.restassured.response.Response;\r\nimport io.restassured.response.ValidatableResponse;\r\nimport org.apache.commons.lang3.StringUtils;\r\nimport org.hamcrest.MatcherAssert;\r\nimport org.junit.After;\r\nimport org.junit.Before;\r\nimport org.junit.Test;\r\nimport static org.apache.http.HttpStatus.*;\r\nimport static org.hamcrest.CoreMatchers.equalTo;\r\nimport static org.hamcrest.CoreMatchers.notNullValue;\r\nimport static org.junit.Assert.*;\r\n\r\npublic class UserRegisterTest {\r\n\r\n    ValidatableResponse response;\r\n    private User user;\r\n    private UserAPI userAPI;\r\n    private String accessToken;\r\n    @Before\r\n    public void setUp() {\r\n        user = User.getRandomUser();\r\n        userAPI = new UserAPI();\r\n    }\r\n    @Test\r\n    @DisplayName(\"Регистрация пользователя\")\r\n    @Description(\"Пользователь успешно регистрируется, код ответа 200 OK\")\r\n    public void createUserTest() {\r\n        response = userAPI.newUser(user);\r\n        accessToken = response.extract().path(\"accessToken\");\r\n        int statusCode = response.extract().statusCode();\r\n        boolean isUserCreate = response.extract().path(\"success\");\r\n        assertEquals(SC_OK, statusCode);\r\n        assertTrue(isUserCreate);\r\n        userAPI.deleteUser(StringUtils.substringAfter(accessToken, \" \"));\r\n    }\r\n    @Test\r\n    @DisplayName(\"Регистрация уже зарегистрированного пользователя\")\r\n    @Description(\"Ошибка 403\")\r\n    public void createAlredyRegisterUserTest() {\r\n        response = userAPI.newUser(user);\r\n        accessToken = response.extract().path(\"accessToken\");\r\n        response = userAPI.newUser(user);\r\n        int statusCode = response.extract().statusCode();\r\n        boolean isCreate = response.extract().path(\"success\");\r\n        assertFalse(isCreate);\r\n        assertEquals(SC_FORBIDDEN, statusCode);\r\n        userAPI.deleteUser(StringUtils.substringAfter(accessToken, \" \"));\r\n    }\r\n    @Test\r\n    @DisplayName(\"Регистрация пользователя без обязательных полей\")\r\n    @Description(\"Ошибка 403\")\r\n    public void creatingUserWithoutRequiredFieldsTest() {\r\n        user.setPassword(null);\r\n        response = userAPI.newUser(user);\r\n        int statusCode = response.extract().statusCode();\r\n        boolean isUserNotCreate = response.extract().path(\"success\");\r\n        assertFalse(isUserNotCreate);\r\n        assertEquals(SC_FORBIDDEN, statusCode);// Тут падает  ошибка если добавлять удаление пользователя, т.к он не видит токен\r\n    }\r\n\r\n    @After\r\n    public void cleanUp(){\r\n\r\n        UserAPI.deleteUser(user);\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/UserRegisterTest.java b/src/test/java/UserRegisterTest.java
+--- a/src/test/java/UserRegisterTest.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/test/java/UserRegisterTest.java	(date 1678815370861)
+@@ -1,16 +1,11 @@
+ import io.qameta.allure.Description;
+ import io.qameta.allure.junit4.DisplayName;
+-import io.restassured.RestAssured;
+-import io.restassured.response.Response;
+ import io.restassured.response.ValidatableResponse;
+ import org.apache.commons.lang3.StringUtils;
+-import org.hamcrest.MatcherAssert;
+ import org.junit.After;
+ import org.junit.Before;
+ import org.junit.Test;
+ import static org.apache.http.HttpStatus.*;
+-import static org.hamcrest.CoreMatchers.equalTo;
+-import static org.hamcrest.CoreMatchers.notNullValue;
+ import static org.junit.Assert.*;
+ 
+ public class UserRegisterTest {
+Index: src/test/java/UpdateUserTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.qameta.allure.Description;\r\nimport io.qameta.allure.junit4.DisplayName;\r\nimport io.restassured.RestAssured;\r\nimport io.restassured.response.Response;\r\nimport io.restassured.response.ValidatableResponse;\r\nimport org.apache.commons.lang3.StringUtils;\r\nimport org.junit.After;\r\nimport org.junit.Before;\r\nimport org.junit.Test;\r\nimport static org.apache.http.HttpStatus.SC_OK;\r\nimport static org.apache.http.HttpStatus.SC_UNAUTHORIZED;\r\nimport static org.junit.Assert.*;\r\n\r\npublic class UpdateUserTest {\r\n    private UserAPI userClient;\r\n    private User user;\r\n    private String accessToken;\r\n    private ValidatableResponse response;\r\n\r\n    @Before\r\n    public void setUp() {\r\n        userClient = new UserAPI();\r\n        user = User.getRandomUser();\r\n        response = userClient.newUser(user);\r\n        accessToken = response.extract().path(\"accessToken\");\r\n\r\n    }\r\n    @After\r\n    public void clearState() {\r\n        UserAPI.deleteUser(StringUtils.substringAfter(accessToken, \" \"));\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Изменение данных пользователя\")\r\n    @Description(\"Данные успешно изменены код ответа 200\")\r\n    public void updateDataUserTest(){\r\n        UserAPI.newUser(user);\r\n        response = UserAPI.loginUser(user, accessToken);\r\n        accessToken = response.extract().path(\"accessToken\");\r\n        ValidatableResponse responseUpd =  UserAPI.updateUserWithAuth(user, accessToken);\r\n        int statusCode = responseUpd.extract().statusCode();\r\n        boolean isChange = responseUpd.extract().path(\"success\");\r\n        assertEquals(SC_OK, statusCode);\r\n        assertTrue(isChange);\r\n        UserAPI.deleteUser(StringUtils.substringAfter(accessToken, \" \"));\r\n    }\r\n    @Test\r\n    @DisplayName(\"Изменение данных пользователя без авторизации\")\r\n    @Description(\"Ошибка 401\")\r\n    public void updateDataUserWithoutAuthTest(){\r\n        ValidatableResponse response = UserAPI.updateUserWithoutAuth(user);\r\n        int statusCode = response.extract().statusCode();\r\n        boolean isDataNotChange = response.extract().path(\"success\");\r\n        assertEquals(SC_UNAUTHORIZED, statusCode);\r\n        assertFalse(isDataNotChange);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/UpdateUserTest.java b/src/test/java/UpdateUserTest.java
+--- a/src/test/java/UpdateUserTest.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/test/java/UpdateUserTest.java	(date 1678815350158)
+@@ -1,7 +1,5 @@
+ import io.qameta.allure.Description;
+ import io.qameta.allure.junit4.DisplayName;
+-import io.restassured.RestAssured;
+-import io.restassured.response.Response;
+ import io.restassured.response.ValidatableResponse;
+ import org.apache.commons.lang3.StringUtils;
+ import org.junit.After;
+Index: src/main/java/Endpoints.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nimport io.restassured.builder.RequestSpecBuilder;\r\nimport io.restassured.specification.RequestSpecification;\r\nimport static io.restassured.http.ContentType.JSON;\r\n\r\npublic class Endpoints {\r\n    public static final String BASE = \"https://stellarburgers.nomoreparties.site\";\r\n    public static final String API_CREATE = \"/api/auth/register\";\r\n    public static final String API_LOGIN = \"/api/auth/login\";\r\n    public static final String API_DELETE = \"/api/auth/user\";\r\n\r\n    public static final String API_ORDERS = \"/api/orders/all\"; //получить все заказы\r\n    public static final String ORDER_PATH = \"/api/orders/\";\r\n\r\n    public static final String USER_PATH = \"/api/auth/\";\r\n    public static final String INGREDIENTS_PATH = \"/api/ingredients/\";\r\n\r\n    protected static RequestSpecification getBaseSpec() {\r\n        return new RequestSpecBuilder()\r\n                .setContentType(JSON)\r\n                .setBaseUri(BASE)\r\n                .build();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Endpoints.java b/src/main/java/Endpoints.java
+--- a/src/main/java/Endpoints.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/main/java/Endpoints.java	(date 1678815302791)
+@@ -1,4 +1,3 @@
+-
+ import io.restassured.builder.RequestSpecBuilder;
+ import io.restassured.specification.RequestSpecification;
+ import static io.restassured.http.ContentType.JSON;
+Index: src/test/java/CreateOrderTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.restassured.RestAssured;\r\nimport io.restassured.response.Response;\r\nimport io.restassured.response.ValidatableResponse;\r\nimport org.junit.Before;\r\nimport io.qameta.allure.Description;\r\nimport io.qameta.allure.junit4.DisplayName;\r\nimport org.apache.commons.lang3.StringUtils;\r\nimport org.junit.Test;\r\nimport java.util.List;\r\nimport static org.apache.http.HttpStatus.*;\r\nimport static org.junit.Assert.*;\r\n\r\npublic class CreateOrderTest {\r\n    private UserAPI userAPI;\r\n    private OrderAPI orderAPI;\r\n    private ValidatableResponse response;\r\n    private Order order;\r\n    private User user;\r\n\r\n    @Before\r\n    public void setUp() {\r\n        userAPI = new UserAPI();\r\n        orderAPI = new OrderAPI();\r\n        order = new Order();\r\n        user = User.getRandomUser();\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Создание заказа после авторизации пользователя\")\r\n    @Description(\"Заказ создан, код ответа 200\")\r\n    public void orderCreateWithAuthTest(){\r\n        fillListIngredients();\r\n        response = userAPI.newUser(user);\r\n        String accessToken = response.extract().path(\"accessToken\");\r\n        userAPI.loginUser(user, accessToken);\r\n        response = orderAPI.orderCreate(order,accessToken);\r\n        int statusCode = response.extract().statusCode();\r\n        boolean isCreate = response.extract().path(\"success\");\r\n        assertEquals(SC_OK, statusCode);\r\n        assertTrue(isCreate);\r\n        userAPI.deleteUser(StringUtils.substringAfter(accessToken, \" \"));\r\n    }\r\n\r\n\r\n    @Test\r\n    @DisplayName(\"Создание заказа без авторизации пользователя\")\r\n    @Description(\"Заказ создан, код ответа 200\")\r\n    public void orderCreateWithoutAuthorization(){\r\n        fillListIngredients();\r\n        ValidatableResponse validatableResponse = orderAPI.createOrderWithoutAuthorization(order);\r\n        int statusCode = validatableResponse.extract().statusCode();\r\n        boolean isCreate = validatableResponse.extract().path(\"success\");\r\n        assertEquals(SC_OK, statusCode);\r\n        assertTrue(isCreate);\r\n    }\r\n    @Test\r\n    @DisplayName(\"Создание заказа без авторизации пользователя и без ингредиентов\")\r\n    @Description(\"Ошибка 400\")\r\n    public void orderCreateWithoutAuthorizationAndIngredients(){\r\n        ValidatableResponse validatableResponse = orderAPI.createOrderWithoutAuthorization(order);\r\n        int statusCode = validatableResponse.extract().statusCode();\r\n        boolean isCreate = validatableResponse.extract().path(\"success\");\r\n        assertEquals(SC_BAD_REQUEST, statusCode);\r\n        assertFalse(isCreate);\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Создние заказа без авторизации пользователя и с неверным хешом ингредиентов\")\r\n    @Description(\"Ошибка 500\")\r\n    public void orderCreateWithoutAuthorizationAndWrongHashIngredient(){\r\n        ValidatableResponse validatableResponse = orderAPI.getAllIngredients();\r\n        List<String> list = validatableResponse.extract().path(\"data._id\");\r\n        List<String> ingredients = order.getIngredients();\r\n        ingredients.add(list.get(0));\r\n        ingredients.add(list.get(5).replaceAll(\"a\", \"l\"));\r\n        ingredients.add(list.get(0));\r\n        validatableResponse = orderAPI.createOrderWithoutAuthorization(order);\r\n        int statusCode = validatableResponse.extract().statusCode();\r\n        assertEquals(SC_INTERNAL_SERVER_ERROR, statusCode);\r\n    }\r\n    private void fillListIngredients() {\r\n        ValidatableResponse validatableResponse = orderAPI.getAllIngredients();\r\n        List<String> list = validatableResponse.extract().path(\"data._id\");\r\n        List<String> ingredients = order.getIngredients();\r\n        ingredients.add(list.get(0));\r\n        ingredients.add(list.get(5));\r\n        ingredients.add(list.get(0));\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/CreateOrderTest.java b/src/test/java/CreateOrderTest.java
+--- a/src/test/java/CreateOrderTest.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/test/java/CreateOrderTest.java	(date 1678815336877)
+@@ -1,5 +1,3 @@
+-import io.restassured.RestAssured;
+-import io.restassured.response.Response;
+ import io.restassured.response.ValidatableResponse;
+ import org.junit.Before;
+ import io.qameta.allure.Description;
+Index: src/main/java/Order.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n\r\nimport java.util.List;\r\nimport java.util.ArrayList;\r\npublic class Order {\r\n\r\n    private List<String> ingredients;\r\n    public Order(List<String> ingredients) {\r\n        this.ingredients = ingredients;\r\n    }\r\n    public Order() {\r\n        ingredients = new ArrayList<>();\r\n    }\r\n    public List<String> getIngredients() {\r\n        return ingredients;\r\n    }\r\n    public void setIngredients(List<String> ingredients) {\r\n        this.ingredients = ingredients;\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Order.java b/src/main/java/Order.java
+--- a/src/main/java/Order.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/main/java/Order.java	(date 1678815302802)
+@@ -1,9 +1,6 @@
+-
+-
+ import java.util.List;
+ import java.util.ArrayList;
+ public class Order {
+-
+     private List<String> ingredients;
+     public Order(List<String> ingredients) {
+         this.ingredients = ingredients;
+@@ -16,6 +13,5 @@
+     }
+     public void setIngredients(List<String> ingredients) {
+         this.ingredients = ingredients;
+-
+     }
+ }
+Index: src/main/java/OrderAPI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nimport io.restassured.response.ValidatableResponse;\r\n\r\nimport static io.restassured.RestAssured.given;\r\npublic class OrderAPI {\r\n\r\n    public ValidatableResponse orderCreate(Order order, String accessToken) {\r\n        return given()\r\n                .spec(Endpoints.getBaseSpec())\r\n                .header(\"Authorization\", accessToken)\r\n                .body(order)\r\n                .log().all()\r\n                .post(Endpoints.ORDER_PATH)\r\n                .then()\r\n                .log().all();\r\n    }\r\n    public static ValidatableResponse createOrderWithoutAuthorization(Order order) {\r\n        return given()\r\n                .spec(Endpoints.getBaseSpec())\r\n                .body(order)\r\n                .log().all()\r\n                .post(Endpoints.ORDER_PATH)\r\n                .then()\r\n                .log().all();\r\n    }\r\n    public static ValidatableResponse getOrdersByAuth(String accessToken) {\r\n        return given()\r\n                .spec(Endpoints.getBaseSpec())\r\n                .header(\"Authorization\", accessToken)\r\n                .log().all()\r\n                .get(Endpoints.ORDER_PATH)\r\n                .then()\r\n                .log().all();\r\n    }\r\n    public static ValidatableResponse getOrdersWithoutAuth() {\r\n        return given()\r\n                .spec(Endpoints.getBaseSpec())\r\n                .log().all()\r\n                .get(Endpoints.ORDER_PATH)\r\n                .then()\r\n                .log().all();\r\n    }\r\n    public ValidatableResponse getAllIngredients() {\r\n        return given()\r\n                .spec(Endpoints.getBaseSpec())\r\n                .log().all()\r\n                .get(Endpoints.INGREDIENTS_PATH)\r\n                .then()\r\n                .log().all();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/OrderAPI.java b/src/main/java/OrderAPI.java
+--- a/src/main/java/OrderAPI.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/main/java/OrderAPI.java	(date 1678815302796)
+@@ -1,9 +1,6 @@
+-
+ import io.restassured.response.ValidatableResponse;
+-
+ import static io.restassured.RestAssured.given;
+ public class OrderAPI {
+-
+     public ValidatableResponse orderCreate(Order order, String accessToken) {
+         return given()
+                 .spec(Endpoints.getBaseSpec())
+Index: src/test/java/OrderTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.qameta.allure.Description;\r\nimport io.qameta.allure.junit4.DisplayName;\r\nimport io.restassured.RestAssured;\r\nimport io.restassured.response.Response;\r\nimport io.restassured.response.ValidatableResponse;\r\nimport org.apache.commons.lang3.StringUtils;\r\nimport org.junit.Before;\r\nimport org.junit.Test;\r\nimport static org.apache.http.HttpStatus.SC_OK;\r\nimport static org.apache.http.HttpStatus.SC_UNAUTHORIZED;\r\nimport static org.junit.Assert.*;\r\npublic class OrderTest {\r\n\r\n    private UserAPI userAPI;\r\n    private OrderAPI orderClient;\r\n    private User user;\r\n    private String accessToken;\r\n    private ValidatableResponse response;\r\n    private Order order;\r\n\r\n    @Before\r\n    public void setUp() {\r\n        user = user.getRandomUser();\r\n        userAPI = new UserAPI();\r\n        orderClient = new OrderAPI();\r\n        order = new Order();\r\n    }\r\n    @Test\r\n    @DisplayName(\"Получение заказов авторизованного пользователя\")\r\n    @Description(\"Приходит список заказов, код ответа 200\")\r\n    public void getOrdersWithAuthTest() {\r\n        response = userAPI.newUser(user);\r\n        accessToken = response.extract().path(\"accessToken\");\r\n        UserAPI.loginUser(user, accessToken);\r\n        orderClient.orderCreate(order, accessToken);\r\n        response = orderClient.getOrdersByAuth(accessToken);\r\n        int statusCode = response.extract().statusCode();\r\n        boolean isGet = response.extract().path(\"success\");\r\n        assertEquals(SC_OK, statusCode);\r\n        assertTrue(isGet);\r\n    }\r\n    @Test\r\n    @DisplayName(\"Получение заказов неавторизованного пользователя\")\r\n    @Description(\"Код ошибки 401\")\r\n    public void getOrdersWithoutAuthTest(){\r\n\r\n        OrderAPI.createOrderWithoutAuthorization(order);\r\n        response = OrderAPI.getOrdersWithoutAuth();\r\n        int statusCode = response.extract().statusCode();\r\n        boolean isGet = response.extract().path(\"success\");\r\n        assertEquals(SC_UNAUTHORIZED, statusCode);\r\n        assertFalse(isGet);\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/OrderTest.java b/src/test/java/OrderTest.java
+--- a/src/test/java/OrderTest.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/test/java/OrderTest.java	(date 1678815343492)
+@@ -1,9 +1,6 @@
+ import io.qameta.allure.Description;
+ import io.qameta.allure.junit4.DisplayName;
+-import io.restassured.RestAssured;
+-import io.restassured.response.Response;
+ import io.restassured.response.ValidatableResponse;
+-import org.apache.commons.lang3.StringUtils;
+ import org.junit.Before;
+ import org.junit.Test;
+ import static org.apache.http.HttpStatus.SC_OK;
+Index: src/test/java/UserLoginTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.qameta.allure.Description;\r\nimport io.qameta.allure.junit4.DisplayName;\r\nimport io.restassured.RestAssured;\r\nimport io.restassured.response.Response;\r\nimport io.restassured.response.ValidatableResponse;\r\nimport org.hamcrest.MatcherAssert;\r\nimport org.junit.After;\r\nimport org.junit.Before;\r\nimport org.junit.Test;\r\nimport static org.apache.http.HttpStatus.*;\r\nimport static org.hamcrest.CoreMatchers.equalTo;\r\nimport static org.hamcrest.CoreMatchers.notNullValue;\r\nimport static org.junit.Assert.*;\r\n\r\npublic class UserLoginTest {\r\n\r\n    private UserAPI userAPI;\r\n    private User user;\r\n    private String accessToken;\r\n    private ValidatableResponse response;\r\n\r\n    @Before\r\n    public void setUp() {\r\n        user = User.getRandomUser();\r\n        userAPI = new UserAPI();\r\n    }\r\n\r\n    @Test\r\n    @DisplayName(\"Авторизация зарегистрированного пользователя\")\r\n    @Description(\"Пользователь успешно авторизуется, код ответа 200 OK\")\r\n    public void loginUserTest() {\r\n        response = userAPI.newUser(user);\r\n        accessToken = response.extract().path(\"accessToken\");\r\n        response = userAPI.loginUser(user, accessToken);\r\n        int statusCode = response.extract().statusCode();\r\n        boolean isUserLogin = response.extract().path(\"success\");\r\n        assertEquals(SC_OK, statusCode);\r\n        assertTrue(isUserLogin);\r\n    }\r\n    @Test\r\n    @DisplayName(\"Авторизация пользователя с пустым полем email\")\r\n    @Description(\"Ошибка 401\")\r\n    public void loginWithEmptyEmailTest() {\r\n        ValidatableResponse response = userAPI.newUser(user);\r\n        accessToken = response.extract().path(\"accessToken\");\r\n        user.setEmail(null);\r\n        ValidatableResponse validatableResponse = userAPI.loginUser(user, accessToken);\r\n        int statusCode = validatableResponse.extract().statusCode();\r\n        boolean isUserNotLogin = validatableResponse.extract().path(\"success\");\r\n        assertEquals(SC_UNAUTHORIZED, statusCode);\r\n        assertFalse(isUserNotLogin);\r\n    }\r\n    @Test\r\n    @DisplayName(\"Авторизация пользователя с пустым полем password\")\r\n    @Description(\"Ошибка 401\")\r\n    public void loginWithEmptyPasswordTest(){\r\n        ValidatableResponse response = userAPI.newUser(user);\r\n        accessToken = response.extract().path(\"accessToken\");\r\n        user.setPassword(null);\r\n        ValidatableResponse validatableResponse = userAPI.loginUser(user,accessToken);\r\n        int statusCode = validatableResponse.extract().statusCode();\r\n        boolean isUserNotLogin = validatableResponse.extract().path(\"success\");\r\n        assertFalse(isUserNotLogin);\r\n        assertEquals(SC_UNAUTHORIZED, statusCode);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/UserLoginTest.java b/src/test/java/UserLoginTest.java
+--- a/src/test/java/UserLoginTest.java	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/src/test/java/UserLoginTest.java	(date 1678815361479)
+@@ -1,15 +1,9 @@
+ import io.qameta.allure.Description;
+ import io.qameta.allure.junit4.DisplayName;
+-import io.restassured.RestAssured;
+-import io.restassured.response.Response;
+ import io.restassured.response.ValidatableResponse;
+-import org.hamcrest.MatcherAssert;
+-import org.junit.After;
+ import org.junit.Before;
+ import org.junit.Test;
+ import static org.apache.http.HttpStatus.*;
+-import static org.hamcrest.CoreMatchers.equalTo;
+-import static org.hamcrest.CoreMatchers.notNullValue;
+ import static org.junit.Assert.*;
+ 
+ public class UserLoginTest {
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f65e7989-7d8d-4b5c-9a7f-bdd97744969c\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MJgkV6GwR7dmzrPMEaCsbemI1S\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Program Files/Git/Diplom_3\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"JUnit.UserRegisterTest\">\r\n    <configuration name=\"OrderTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Diplom_2\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"OrderTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"OrderTest.getOrdersWithAuthTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Diplom_2\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"OrderTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"getOrdersWithAuthTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UpdateUserTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Diplom_2\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"UpdateUserTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UserLoginTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Diplom_2\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"UserLoginTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UserRegisterTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Diplom_2\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"UserRegisterTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.UserRegisterTest\" />\r\n        <item itemvalue=\"JUnit.UserLoginTest\" />\r\n        <item itemvalue=\"JUnit.UpdateUserTest\" />\r\n        <item itemvalue=\"JUnit.OrderTest.getOrdersWithAuthTest\" />\r\n        <item itemvalue=\"JUnit.OrderTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f65e7989-7d8d-4b5c-9a7f-bdd97744969c\" name=\"Changes\" comment=\"\" />\r\n      <created>1677491246778</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1677491246778</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/UserAPI.java</url>\r\n          <line>18</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 89b2e738e5dbdb7022558a8c6307e7e36221c02e)
++++ b/.idea/workspace.xml	(date 1678815370911)
+@@ -6,6 +6,16 @@
+   <component name="ChangeListManager">
+     <list default="true" id="f65e7989-7d8d-4b5c-9a7f-bdd97744969c" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Endpoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Endpoints.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Order.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/OrderAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/OrderAPI.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserAPI.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OrderTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -40,7 +50,7 @@
+   "keyToString": {
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "last_opened_file_path": "C:/Program Files/Git/Diplom_3"
++    "last_opened_file_path": "C:/Program Files/Git/Diplom_2"
+   }
+ }]]></component>
+   <component name="RunManager" selected="JUnit.UserRegisterTest">
+@@ -111,15 +121,4 @@
+     </task>
+     <servers />
+   </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/UserAPI.java</url>
+-          <line>18</line>
+-          <option name="timeStamp" value="1" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
+-  </component>
+ </project>
+\ No newline at end of file
