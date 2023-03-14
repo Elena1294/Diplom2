@@ -5,6 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f65e7989-7d8d-4b5c-9a7f-bdd97744969c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/03d196d8-7e81-4364-bc04-fc3e489872fd-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/1ca64f3f-f0a9-4b3b-96b7-934ea989665e-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/3227fea9-fddc-43b7-adf9-080b61239ecf-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/4fc6a437-f594-48bb-9dd6-89d4fb5545a4-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/8d08cdcb-0224-4f47-9a8c-20dc24d8c6e5-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/9aca3b3a-4c6b-4f90-a328-f72403d1cc6c-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/bcc5278c-d58a-4f1f-9d7d-15a0dd4ee3cd-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/c1a074f8-9208-4bf8-968f-d87864e31118-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/c451c839-ddac-4271-92bd-28e20dbc8cd1-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/c4c69fe9-9ae2-4838-a022-170c6c2fe611-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/d40af4ec-fce0-4cb4-8085-15fc521b8583-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/d7a87254-efce-4690-8497-103f003ee414-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/e3ae112c-725c-41ca-ad50-3624d2451d9a-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/e6714f33-e816-4b4f-9f4c-b2e5b3a4bd58-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/allure-results/ff1a4be3-604c-4beb-84a1-3a242a203ef6-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Endpoints.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Order.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/OrderAPI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/TestDataUser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/UserAPI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/CreateOrderTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/OrderTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-CreateOrderTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-OrderTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-UpdateUserTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-UserLoginTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-UserRegisterTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/UpdateUserTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/UserLoginTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/UserRegisterTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/CreateOrderTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/OrderTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/UpdateUserTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/UserLoginTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/UserRegisterTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/OrderAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/OrderAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,22 +95,31 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Git/Diplom_3&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.UserRegisterTest">
-    <configuration name="OrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CreateOrderTest.orderCreateWithAuthTest">
+    <configuration name="CreateOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="OrderTest" />
+      <option name="MAIN_CLASS_NAME" value="CreateOrderTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderTest.getOrdersWithAuthTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateOrderTest.orderCreateWithAuthTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Diplom_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateOrderTest" />
+      <option name="METHOD_NAME" value="orderCreateWithAuthTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="OrderTest" />
-      <option name="METHOD_NAME" value="getOrdersWithAuthTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -81,22 +142,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRegisterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Diplom_2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UserRegisterTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserRegisterTest" />
-        <item itemvalue="JUnit.UserLoginTest" />
-        <item itemvalue="JUnit.UpdateUserTest" />
-        <item itemvalue="JUnit.OrderTest.getOrdersWithAuthTest" />
+        <item itemvalue="JUnit.CreateOrderTest.orderCreateWithAuthTest" />
+        <item itemvalue="JUnit.CreateOrderTest" />
         <item itemvalue="JUnit.OrderTest" />
+        <item itemvalue="JUnit.UpdateUserTest" />
+        <item itemvalue="JUnit.UserLoginTest" />
       </list>
     </recent_temporary>
   </component>
@@ -110,16 +162,5 @@
       <updated>1677491246778</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/UserAPI.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

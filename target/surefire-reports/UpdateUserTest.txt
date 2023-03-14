@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: UpdateUserTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.424 s <<< FAILURE! - in UpdateUserTest
+updateDataUserWithoutAuthTest(UpdateUserTest)  Time elapsed: 0.203 s  <<< ERROR!
+java.lang.IllegalArgumentException: accessToken cannot be null
+	at UpdateUserTest.clearState(UpdateUserTest.java:26)
+

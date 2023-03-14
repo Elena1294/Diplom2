@@ -1,15 +1,12 @@
+
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-import org.hamcrest.MatcherAssert;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.apache.http.HttpStatus.*;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
+
+import static org.apache.http.HttpStatus.SC_OK;
+import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static org.junit.Assert.*;
 
 public class UserLoginTest {
@@ -62,5 +59,6 @@ public class UserLoginTest {
         boolean isUserNotLogin = validatableResponse.extract().path("success");
         assertFalse(isUserNotLogin);
         assertEquals(SC_UNAUTHORIZED, statusCode);
+
     }
 }

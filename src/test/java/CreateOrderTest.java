@@ -11,9 +11,12 @@ import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.*;
 
 public class CreateOrderTest {
+    private ValidatableResponse validatableResponse;
+    private String accessToken;
     private UserAPI userAPI;
     private OrderAPI orderAPI;
     private ValidatableResponse response;
+    private ValidatableResponse responseOrder;
     private Order order;
     private User user;
 
@@ -30,10 +33,10 @@ public class CreateOrderTest {
     @Description("Заказ создан, код ответа 200")
     public void orderCreateWithAuthTest(){
         fillListIngredients();
-        response = userAPI.newUser(user);
+        response = UserAPI.newUser(user);
         String accessToken = response.extract().path("accessToken");
-        userAPI.loginUser(user, accessToken);
-        response = orderAPI.orderCreate(order,accessToken);
+        UserAPI.loginUser(user, accessToken);
+        response = OrderAPI.orderCreate(order,accessToken);
         int statusCode = response.extract().statusCode();
         boolean isCreate = response.extract().path("success");
         assertEquals(SC_OK, statusCode);
@@ -47,7 +50,7 @@ public class CreateOrderTest {
     @Description("Заказ создан, код ответа 200")
     public void orderCreateWithoutAuthorization(){
         fillListIngredients();
-        ValidatableResponse validatableResponse = orderAPI.createOrderWithoutAuthorization(order);
+        validatableResponse = orderAPI.createOrderWithoutAuthorization(order);
         int statusCode = validatableResponse.extract().statusCode();
         boolean isCreate = validatableResponse.extract().path("success");
         assertEquals(SC_OK, statusCode);
@@ -57,6 +60,7 @@ public class CreateOrderTest {
     @DisplayName("Создание заказа без авторизации пользователя и без ингредиентов")
     @Description("Ошибка 400")
     public void orderCreateWithoutAuthorizationAndIngredients(){
+
         ValidatableResponse validatableResponse = orderAPI.createOrderWithoutAuthorization(order);
         int statusCode = validatableResponse.extract().statusCode();
         boolean isCreate = validatableResponse.extract().path("success");
@@ -68,6 +72,7 @@ public class CreateOrderTest {
     @DisplayName("Создние заказа без авторизации пользователя и с неверным хешом ингредиентов")
     @Description("Ошибка 500")
     public void orderCreateWithoutAuthorizationAndWrongHashIngredient(){
+
         ValidatableResponse validatableResponse = orderAPI.getAllIngredients();
         List<String> list = validatableResponse.extract().path("data._id");
         List<String> ingredients = order.getIngredients();
@@ -79,6 +84,7 @@ public class CreateOrderTest {
         assertEquals(SC_INTERNAL_SERVER_ERROR, statusCode);
     }
     private void fillListIngredients() {
+
         ValidatableResponse validatableResponse = orderAPI.getAllIngredients();
         List<String> list = validatableResponse.extract().path("data._id");
         List<String> ingredients = order.getIngredients();

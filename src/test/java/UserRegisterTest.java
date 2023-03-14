@@ -5,7 +5,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.apache.http.HttpStatus.*;
+
+import static org.apache.http.HttpStatus.SC_FORBIDDEN;
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.*;
 
 public class UserRegisterTest {
@@ -54,12 +56,13 @@ public class UserRegisterTest {
         boolean isUserNotCreate = response.extract().path("success");
         assertFalse(isUserNotCreate);
         assertEquals(SC_FORBIDDEN, statusCode);// Тут падает  ошибка если добавлять удаление пользователя, т.к он не видит токен
+
     }
 
     @After
     public void cleanUp(){
 
-        UserAPI.deleteUser(user);
+        UserAPI.deleteUser(String.valueOf(user));
 
     }
 }

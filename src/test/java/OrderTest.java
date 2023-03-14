@@ -10,7 +10,6 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static org.junit.Assert.*;
 public class OrderTest {
-
     private UserAPI userAPI;
     private OrderAPI orderClient;
     private User user;
@@ -29,6 +28,7 @@ public class OrderTest {
     @DisplayName("Получение заказов авторизованного пользователя")
     @Description("Приходит список заказов, код ответа 200")
     public void getOrdersWithAuthTest() {
+
         response = userAPI.newUser(user);
         accessToken = response.extract().path("accessToken");
         UserAPI.loginUser(user, accessToken);

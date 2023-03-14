@@ -1,6 +1,5 @@
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-
 import static io.restassured.RestAssured.given;
 
 public class UserAPI extends Endpoints {
@@ -24,18 +23,6 @@ public class UserAPI extends Endpoints {
                 .log().all();
     }
 
-    public static Response deleteUser(User user){
-        return
-                given()
-                        .header("Content-type", "application/json")
-                        .and()
-                        .body(user)
-                        .when()
-                        .delete(Endpoints.API_DELETE);
-    }
-
-
-
     public static ValidatableResponse deleteUser(String accessToken) {
         return given()
                 .spec(Endpoints.getBaseSpec())
@@ -45,7 +32,9 @@ public class UserAPI extends Endpoints {
                 .then()
                 .log().all();
     }
+
     public static ValidatableResponse updateUserWithAuth(User user, String accessToken) {
+
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .header("Authorization", accessToken)
@@ -55,7 +44,9 @@ public class UserAPI extends Endpoints {
                 .then()
                 .log().all();
     }
+
     public static ValidatableResponse updateUserWithoutAuth(User user) {
+
         return given()
                 .spec(Endpoints.getBaseSpec())
                 .body(user)
@@ -64,5 +55,4 @@ public class UserAPI extends Endpoints {
                 .then()
                 .log().all();
     }
-
 }

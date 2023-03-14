@@ -34,6 +34,7 @@ public class UpdateUserTest {
     @DisplayName("Изменение данных пользователя")
     @Description("Данные успешно изменены код ответа 200")
     public void updateDataUserTest(){
+
         UserAPI.newUser(user);
         response = UserAPI.loginUser(user, accessToken);
         accessToken = response.extract().path("accessToken");
@@ -48,6 +49,7 @@ public class UpdateUserTest {
     @DisplayName("Изменение данных пользователя без авторизации")
     @Description("Ошибка 401")
     public void updateDataUserWithoutAuthTest(){
+
         ValidatableResponse response = UserAPI.updateUserWithoutAuth(user);
         int statusCode = response.extract().statusCode();
         boolean isDataNotChange = response.extract().path("success");
