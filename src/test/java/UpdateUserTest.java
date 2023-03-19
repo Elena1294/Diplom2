@@ -43,7 +43,7 @@ public class UpdateUserTest {
         boolean isChange = responseUpd.extract().path("success");
         assertEquals(SC_OK, statusCode);
         assertTrue(isChange);
-        UserAPI.deleteUser(StringUtils.substringAfter(accessToken, " "));
+
     }
     @Test
     @DisplayName("Изменение данных пользователя без авторизации")
@@ -55,5 +55,11 @@ public class UpdateUserTest {
         boolean isDataNotChange = response.extract().path("success");
         assertEquals(SC_UNAUTHORIZED, statusCode);
         assertFalse(isDataNotChange);
+    }
+    @After
+    public void cleanUp(){
+
+        UserAPI.deleteUser(accessToken);
+
     }
 }

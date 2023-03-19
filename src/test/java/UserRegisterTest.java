@@ -6,8 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.apache.http.HttpStatus.SC_FORBIDDEN;
-import static org.apache.http.HttpStatus.SC_OK;
+import java.util.stream.DoubleStream;
+
+import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.*;
 
 public class UserRegisterTest {
@@ -44,25 +45,27 @@ public class UserRegisterTest {
         boolean isCreate = response.extract().path("success");
         assertFalse(isCreate);
         assertEquals(SC_FORBIDDEN, statusCode);
-        userAPI.deleteUser(StringUtils.substringAfter(accessToken, " "));
+
     }
     @Test
     @DisplayName("Регистрация пользователя без обязательных полей")
     @Description("Ошибка 403")
-    public void creatingUserWithoutRequiredFieldsTest() {
+    public void createUserWithoutRequiredFieldsTest() {
+        response = UserAPI.newUser(user);
+        accessToken = response.extract().path("accessToken");
         user.setPassword(null);
-        response = userAPI.newUser(user);
-        int statusCode = response.extract().statusCode();
-        boolean isUserNotCreate = response.extract().path("success");
-        assertFalse(isUserNotCreate);
-        assertEquals(SC_FORBIDDEN, statusCode);// Тут падает  ошибка если добавлять удаление пользователя, т.к он не видит токен
+        ValidatableResponse validatableResponse = UserAPI.loginUser(user,accessToken);
+        int statusCode = validatableResponse.extract().statusCode();
+        boolean isUserNotLogin = validatableResponse.extract().path("success");
+        assertFalse(isUserNotLogin);
+        assertEquals(SC_UNAUTHORIZED, statusCode);
 
     }
 
     @After
     public void cleanUp(){
 
-        UserAPI.deleteUser(String.valueOf(user));
+        UserAPI.deleteUser(accessToken);
 
     }
 }
