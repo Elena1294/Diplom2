@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f65e7989-7d8d-4b5c-9a7f-bdd97744969c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/OrderTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/UserRegisterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UserRegisterTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +58,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UpdateUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateOrderTest.orderCreateWithAuthTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UpdateUserTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="CreateOrderTest" />
+      <option name="METHOD_NAME" value="orderCreateWithAuthTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -81,11 +86,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRegisterTest.createUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRegisterTest.createUserWithoutRequiredFieldsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="UserRegisterTest" />
-      <option name="METHOD_NAME" value="createUserTest" />
+      <option name="METHOD_NAME" value="createUserWithoutRequiredFieldsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -94,10 +99,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.UserRegisterTest" />
-        <item itemvalue="JUnit.UserLoginTest" />
-        <item itemvalue="JUnit.UpdateUserTest" />
+        <item itemvalue="JUnit.UserRegisterTest.createUserWithoutRequiredFieldsTest" />
         <item itemvalue="JUnit.CreateOrderTest" />
-        <item itemvalue="JUnit.UserRegisterTest.createUserTest" />
+        <item itemvalue="JUnit.CreateOrderTest.orderCreateWithAuthTest" />
+        <item itemvalue="JUnit.UserLoginTest" />
       </list>
     </recent_temporary>
   </component>

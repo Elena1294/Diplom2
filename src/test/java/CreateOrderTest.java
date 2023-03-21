@@ -43,7 +43,7 @@ public class CreateOrderTest {
         boolean isCreate = response.extract().path("success");
         assertEquals(SC_OK, statusCode);
         assertTrue(isCreate);
-
+        UserAPI.deleteUser(accessToken);
     }
 
 
@@ -93,12 +93,5 @@ public class CreateOrderTest {
         ingredients.add(list.get(0));
         ingredients.add(list.get(5));
         ingredients.add(list.get(0));
-    }
-
-    @After
-    public void cleanUp(){
-
-        UserAPI.deleteUser(accessToken);
-
     }
 }

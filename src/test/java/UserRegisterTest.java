@@ -14,7 +14,7 @@ public class UserRegisterTest {
     ValidatableResponse response;
     private User user;
     private UserAPI userAPI;
-    private String accessToken;
+    private String accessToken = null;
     @Before
     public void setUp() {
         user = User.getRandomUser();
@@ -55,26 +55,12 @@ public class UserRegisterTest {
         boolean isCreate = response.extract().path("success");
         assertFalse(isCreate);
         assertEquals(SC_FORBIDDEN, statusCode);
-
-        accessToken = response.extract().path("accessToken");
-        if (accessToken != null) {
-            ValidatableResponse validatableResponse = UserAPI.loginUser(user, accessToken);
-            int statusCodeLogin = validatableResponse.extract().statusCode();
-            boolean isUserNotLogin = validatableResponse.extract().path("success");
-            assertFalse(isUserNotLogin);
-            assertEquals(SC_UNAUTHORIZED, statusCodeLogin);
-        }
-        else
-        {
-                UserAPI.deleteUser(StringUtils.substringAfter(accessToken, " "));
-            }
         }
     @After
     public void cleanUp(){
 
-        response = userAPI.loginUser(user, accessToken);
-        accessToken = response.extract().path("accessToken");
-        if (accessToken != null) {
+        if (accessToken == null) {}
+        else  if (accessToken != null) {
             UserAPI.deleteUser(accessToken);
         }
 

@@ -39,6 +39,7 @@ public class OrderTest {
         boolean isGet = response.extract().path("success");
         assertEquals(SC_OK, statusCode);
         assertTrue(isGet);
+        UserAPI.deleteUser(accessToken);
 
     }
     @Test
@@ -55,10 +56,4 @@ public class OrderTest {
 
     }
 
-    @After
-    public void cleanUp(){
-
-        UserAPI.deleteUser(accessToken);
-
-    }
 }
