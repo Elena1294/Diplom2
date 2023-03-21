@@ -8,8 +8,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/CreateOrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/CreateOrderTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/OrderTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/UpdateUserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UpdateUserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/UserLoginTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UserLoginTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/UserRegisterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UserRegisterTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,12 +63,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateOrderTest.orderCreateWithAuthTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CreateOrderTest" />
-      <option name="METHOD_NAME" value="orderCreateWithAuthTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="OrderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UpdateUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Diplom_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UpdateUserTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -86,23 +99,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRegisterTest.createUserWithoutRequiredFieldsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Diplom_2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UserRegisterTest" />
-      <option name="METHOD_NAME" value="createUserWithoutRequiredFieldsTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.UserRegisterTest" />
-        <item itemvalue="JUnit.UserRegisterTest.createUserWithoutRequiredFieldsTest" />
-        <item itemvalue="JUnit.CreateOrderTest" />
-        <item itemvalue="JUnit.CreateOrderTest.orderCreateWithAuthTest" />
         <item itemvalue="JUnit.UserLoginTest" />
+        <item itemvalue="JUnit.UpdateUserTest" />
+        <item itemvalue="JUnit.OrderTest" />
+        <item itemvalue="JUnit.CreateOrderTest" />
       </list>
     </recent_temporary>
   </component>

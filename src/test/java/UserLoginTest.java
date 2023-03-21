@@ -1,8 +1,6 @@
-
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +13,7 @@ public class UserLoginTest {
 
     private UserAPI userAPI;
     private User user;
-    private String accessToken;
+    private String accessToken = null;
     private ValidatableResponse response;
 
     @Before
@@ -67,7 +65,10 @@ public class UserLoginTest {
     @After
     public void cleanUp(){
 
-        UserAPI.deleteUser(accessToken);
+        if (accessToken == null) {}
+        else  {
+            UserAPI.deleteUser(accessToken);
+        }
 
     }
 }

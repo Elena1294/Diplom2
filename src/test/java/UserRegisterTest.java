@@ -1,11 +1,9 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.*;
 
@@ -60,7 +58,7 @@ public class UserRegisterTest {
     public void cleanUp(){
 
         if (accessToken == null) {}
-        else  if (accessToken != null) {
+        else  {
             UserAPI.deleteUser(accessToken);
         }
 

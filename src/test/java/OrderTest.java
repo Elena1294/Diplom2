@@ -1,9 +1,6 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +11,7 @@ public class OrderTest {
     private UserAPI userAPI;
     private OrderAPI orderClient;
     private User user;
-    private String accessToken;
+    private String accessToken = null;
     private ValidatableResponse response;
     private Order order;
 
@@ -39,7 +36,6 @@ public class OrderTest {
         boolean isGet = response.extract().path("success");
         assertEquals(SC_OK, statusCode);
         assertTrue(isGet);
-        UserAPI.deleteUser(accessToken);
 
     }
     @Test
@@ -53,6 +49,16 @@ public class OrderTest {
         boolean isGet = response.extract().path("success");
         assertEquals(SC_UNAUTHORIZED, statusCode);
         assertFalse(isGet);
+
+    }
+
+    @After
+    public void cleanUp(){
+
+        if (accessToken == null) {}
+        else  {
+            UserAPI.deleteUser(accessToken);
+        }
 
     }
 

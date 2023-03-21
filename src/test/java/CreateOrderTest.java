@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class CreateOrderTest {
     private ValidatableResponse validatableResponse;
-    private String accessToken;
+    private String accessToken = null;
     private UserAPI userAPI;
     private OrderAPI orderAPI;
     private ValidatableResponse response;
@@ -43,7 +43,6 @@ public class CreateOrderTest {
         boolean isCreate = response.extract().path("success");
         assertEquals(SC_OK, statusCode);
         assertTrue(isCreate);
-        UserAPI.deleteUser(accessToken);
     }
 
 
@@ -93,5 +92,15 @@ public class CreateOrderTest {
         ingredients.add(list.get(0));
         ingredients.add(list.get(5));
         ingredients.add(list.get(0));
+    }
+
+    @After
+    public void cleanUp(){
+
+        if (accessToken == null) {}
+        else  {
+            UserAPI.deleteUser(accessToken);
+        }
+
     }
 }
