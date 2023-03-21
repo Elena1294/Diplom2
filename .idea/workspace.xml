@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f65e7989-7d8d-4b5c-9a7f-bdd97744969c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CreateOrderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OrderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/CreateOrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/CreateOrderTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/OrderTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/UpdateUserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UpdateUserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/UserLoginTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UserLoginTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/UserRegisterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UserRegisterTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

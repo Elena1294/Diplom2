@@ -39,7 +39,7 @@ public class OrderTest {
         boolean isGet = response.extract().path("success");
         assertEquals(SC_OK, statusCode);
         assertTrue(isGet);
-        UserAPI.deleteUser(accessToken);
+
     }
     @Test
     @DisplayName("Получение заказов неавторизованного пользователя")
@@ -52,6 +52,13 @@ public class OrderTest {
         boolean isGet = response.extract().path("success");
         assertEquals(SC_UNAUTHORIZED, statusCode);
         assertFalse(isGet);
+
+    }
+
+    @After
+    public void cleanUp(){
+
+        UserAPI.deleteUser(accessToken);
 
     }
 }
