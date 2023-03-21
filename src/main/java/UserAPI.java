@@ -26,6 +26,7 @@ public class UserAPI extends Endpoints {
     public static ValidatableResponse deleteUser(String accessToken) {
         return given()
                 .spec(Endpoints.getBaseSpec())
+                .header("Authorization", accessToken)
                 .auth().oauth2(accessToken)
                 .log().all()
                 .delete(Endpoints.USER_PATH + "user")

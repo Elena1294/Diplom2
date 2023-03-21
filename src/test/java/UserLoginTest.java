@@ -2,6 +2,7 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class UserLoginTest {
         ValidatableResponse response = userAPI.newUser(user);
         accessToken = response.extract().path("accessToken");
         user.setEmail(null);
-        ValidatableResponse validatableResponse = userAPI.loginUser(user, accessToken);
+        ValidatableResponse validatableResponse = userAPI.loginUser(user,accessToken);
         int statusCode = validatableResponse.extract().statusCode();
         boolean isUserNotLogin = validatableResponse.extract().path("success");
         assertEquals(SC_UNAUTHORIZED, statusCode);

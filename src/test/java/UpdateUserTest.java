@@ -25,10 +25,6 @@ public class UpdateUserTest {
         accessToken = response.extract().path("accessToken");
 
     }
-    @After
-    public void clearState() {
-        UserAPI.deleteUser(StringUtils.substringAfter(accessToken, " "));
-    }
 
     @Test
     @DisplayName("Изменение данных пользователя")

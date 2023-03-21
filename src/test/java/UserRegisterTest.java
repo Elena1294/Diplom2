@@ -6,8 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.stream.DoubleStream;
-
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.*;
 
@@ -32,7 +30,7 @@ public class UserRegisterTest {
         boolean isUserCreate = response.extract().path("success");
         assertEquals(SC_OK, statusCode);
         assertTrue(isUserCreate);
-        userAPI.deleteUser(StringUtils.substringAfter(accessToken, " "));
+
     }
     @Test
     @DisplayName("Регистрация уже зарегистрированного пользователя")
@@ -51,21 +49,37 @@ public class UserRegisterTest {
     @DisplayName("Регистрация пользователя без обязательных полей")
     @Description("Ошибка 403")
     public void createUserWithoutRequiredFieldsTest() {
-        response = UserAPI.newUser(user);
-        accessToken = response.extract().path("accessToken");
         user.setPassword(null);
-        ValidatableResponse validatableResponse = UserAPI.loginUser(user,accessToken);
-        int statusCode = validatableResponse.extract().statusCode();
-        boolean isUserNotLogin = validatableResponse.extract().path("success");
-        assertFalse(isUserNotLogin);
-        assertEquals(SC_UNAUTHORIZED, statusCode);
+        response = UserAPI.newUser(user);
+        int statusCode = response.extract().statusCode();
+        boolean isCreate = response.extract().path("success");
+        assertFalse(isCreate);
+        assertEquals(SC_FORBIDDEN, statusCode);
 
-    }
-
+        accessToken = response.extract().path("accessToken");
+        if (accessToken != null) {
+            ValidatableResponse validatableResponse = UserAPI.loginUser(user, accessToken);
+            int statusCodeLogin = validatableResponse.extract().statusCode();
+            boolean isUserNotLogin = validatableResponse.extract().path("success");
+            assertFalse(isUserNotLogin);
+            assertEquals(SC_UNAUTHORIZED, statusCodeLogin);
+        }
+        else
+        {
+                UserAPI.deleteUser(StringUtils.substringAfter(accessToken, " "));
+            }
+        }
     @After
     public void cleanUp(){
 
-        UserAPI.deleteUser(accessToken);
+        response = userAPI.loginUser(user, accessToken);
+        accessToken = response.extract().path("accessToken");
+        if (accessToken != null) {
+            UserAPI.deleteUser(accessToken);
+        }
 
     }
-}
+
+    }
+
+

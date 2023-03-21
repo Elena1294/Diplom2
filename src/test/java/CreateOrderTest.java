@@ -1,6 +1,7 @@
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
+import org.junit.After;
 import org.junit.Before;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -16,6 +17,7 @@ public class CreateOrderTest {
     private UserAPI userAPI;
     private OrderAPI orderAPI;
     private ValidatableResponse response;
+
     private ValidatableResponse responseOrder;
     private Order order;
     private User user;
@@ -41,7 +43,7 @@ public class CreateOrderTest {
         boolean isCreate = response.extract().path("success");
         assertEquals(SC_OK, statusCode);
         assertTrue(isCreate);
-        userAPI.deleteUser(StringUtils.substringAfter(accessToken, " "));
+        UserAPI.deleteUser(accessToken);
     }
 
 
