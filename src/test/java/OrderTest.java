@@ -55,10 +55,7 @@ public class OrderTest {
     @After
     public void cleanUp(){
 
-        if (accessToken == null) {}
-        else  {
-            UserAPI.deleteUser(accessToken);
-        }
+        if (accessToken != null) {UserAPI.deleteUser(accessToken);}
 
     }
 

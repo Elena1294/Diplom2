@@ -11,9 +11,6 @@
       <change beforePath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UpdateUserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserLoginTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserRegisterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/CreateOrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/CreateOrderTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/OrderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/OrderTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/UpdateUserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UpdateUserTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/UserLoginTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UserLoginTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/UserRegisterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UserRegisterTest.class" afterDir="false" />
     </list>
@@ -53,7 +50,7 @@
     "last_opened_file_path": "C:/Program Files/Git/Diplom_3"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.UserRegisterTest">
+  <component name="RunManager" selected="JUnit.UserLoginTest">
     <configuration name="CreateOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Diplom_2" />
       <option name="PACKAGE_NAME" value="" />
@@ -101,8 +98,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserRegisterTest" />
         <item itemvalue="JUnit.UserLoginTest" />
+        <item itemvalue="JUnit.UserRegisterTest" />
         <item itemvalue="JUnit.UpdateUserTest" />
         <item itemvalue="JUnit.OrderTest" />
         <item itemvalue="JUnit.CreateOrderTest" />
